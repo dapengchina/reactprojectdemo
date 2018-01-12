@@ -17,7 +17,7 @@ module.exports = {
  },
  plugins: [
     new HtmlwebpackPlugin({
-        template: './public/app.html', //指定模板路径
+        template: __dirname + '/public/app.html', //指定模板路径
         filename: 'app.html', //指定文件名
     }),
     new OpenBrowserPlugin({
