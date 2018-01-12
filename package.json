@@ -24,7 +24,6 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --progress -- watch --hot",
     "build": "webpack --progress --watch --colors"
   },
