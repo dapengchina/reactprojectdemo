@@ -1179,7 +1179,7 @@ _reactDom2.default.render(_react2.default.createElement(
   'div',
   null,
   'Hello World'
-), document.getElementById('app'));
+), document.getElementById('root'));
 
 /***/ }),
 /* 19 */
