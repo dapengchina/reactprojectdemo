@@ -1,11 +1,7 @@
-/*eslint-disable no-unused-vars*/
-import "@babel/polyfill";
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Counter from './js/user/components/userComponent';
-import rootSaga from './js/user/sagas/userSaga';
 import store from './js/user/stores/userStore';
 
 

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import reducer from '../reducers/userReducer';
+import rootSaga from '../sagas/userSaga';
 
 //创建saga中间件:sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
