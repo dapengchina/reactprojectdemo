@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Counter from './js/user/components/userComponent';
 import store from './js/user/stores/userStore';
+import UserList from './js/user/components/userListComponent';
 
 
 const action = type => store.dispatch({type});
@@ -12,12 +13,13 @@ const action = type => store.dispatch({type});
  */
 function render() {
   ReactDOM.render(
-    <Counter
+    /*<Counter
       value={store.getState()}
       onIncrement={() => action('INCREMENT')}
       onDecrement={() => action('DECREMENT')}
       onIncrementIfOdd={() => action('INCREMENT_IF_ODD')}
-      onIncrementAsync={() => action('INCREMENT_ASYNC')} />,
+      onIncrementAsync={() => action('INCREMENT_ASYNC')} />,*/
+      <UserList></UserList>,
     document.getElementById('root')
   )
 }
