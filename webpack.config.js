@@ -21,7 +21,7 @@ module.exports = {
         filename: 'app.html', //指定文件名
     }),
     new OpenBrowserPlugin({
-        url: 'http://localhost:8080'
+        url: 'http://localhost:3000'
     })
  ]
 };

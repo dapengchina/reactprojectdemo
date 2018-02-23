@@ -28,7 +28,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "webpack-dev-server --progress --hot",
+    "start": "webpack-dev-server --progress --hot --port 3000",
     "build": "webpack --progress --colors"
   },
   "repository": {

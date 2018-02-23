@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import getUserList from '../apis/userListApi'
+import 'whatwg-fetch';
 
-
+var userListBefore=new Array();
 export default class UserList extends Component{
-
-       componentDidMount(){
-            alert("发送请求");
-       }; 
+      componentWillMount (){
+        fetch('http://localhost:8080/user/query',{
+            method: 'GET'
+        }).then(res=>{
+            return res.json();
+        }).then(json=>{
+            userListBefore=json.data;
+            console.log(userListBefore.length);
+        })
+       }
        render(){
            return(
            <div>
@@ -17,6 +25,14 @@ export default class UserList extends Component{
                      <td>pwd</td>
                      <td>Operate</td>
                  </tr>
+                
+                             <tr>
+                                     <td>{userListBefore!=null?userListBefore.length:""}</td>
+                                     <td>dd</td>
+                                     <td>dd</td>
+                                     <td>dd</td>
+                                   </tr>  
+                 
                </table>
            </div>)
        }
