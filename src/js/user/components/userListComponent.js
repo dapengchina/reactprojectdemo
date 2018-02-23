@@ -5,13 +5,19 @@ import 'whatwg-fetch';
 
 var userListBefore=new Array();
 export default class UserList extends Component{
-      componentWillMount (){
+      getInitialState() {
+        var userListBefore=new Array();
+        return userListBefore;
+      }
+      componentDidMount (){
         fetch('http://localhost:8080/user/query',{
             method: 'GET'
         }).then(res=>{
             return res.json();
         }).then(json=>{
-            userListBefore=json.data;
+            this.setState(
+                userListBefore=json.data
+            );
             console.log(userListBefore.length);
         })
        }
@@ -25,14 +31,17 @@ export default class UserList extends Component{
                      <td>pwd</td>
                      <td>Operate</td>
                  </tr>
-                
-                             <tr>
-                                     <td>{userListBefore!=null?userListBefore.length:""}</td>
-                                     <td>dd</td>
-                                     <td>dd</td>
-                                     <td>dd</td>
-                                   </tr>  
-                 
+                 {userListBefore!=null?userListBefore.map(
+                    function(item){
+                      return <tr>
+                                <td>{item.id}</td>
+                                <td>{item.username}</td>
+                                <td>{item.password}</td>
+                                <td>删除</td>
+                              </tr>
+                    }
+                 ):""}
+                   
                </table>
            </div>)
        }

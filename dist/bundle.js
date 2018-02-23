@@ -24500,7 +24500,6 @@ __webpack_require__(76);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var userListBefore = new Array();
-var userListAfter = new Array();
 
 var UserList = function (_Component) {
     (0, _inherits3.default)(UserList, _Component);
@@ -24511,22 +24510,25 @@ var UserList = function (_Component) {
     }
 
     (0, _createClass3.default)(UserList, [{
-        key: 'componentWillMount',
-        value: function componentWillMount() {
+        key: 'getInitialState',
+        value: function getInitialState() {
+            var userListBefore = new Array();
+            return userListBefore;
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
             fetch('http://localhost:8080/user/query', {
                 method: 'GET'
             }).then(function (res) {
                 return res.json();
             }).then(function (json) {
-                userListBefore = json.data;
+
+                _this2.setState(userListBefore = json.data);
                 console.log(userListBefore.length);
             });
-        }
-    }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            userListAfter = userListBefore;
-            console.log(userListAfter.length);
         }
     }, {
         key: 'render',
@@ -24561,30 +24563,32 @@ var UserList = function (_Component) {
                             'Operate'
                         )
                     ),
-                    _react2.default.createElement(
-                        'tr',
-                        null,
-                        _react2.default.createElement(
-                            'td',
+                    userListBefore != null ? userListBefore.map(function (item) {
+                        return _react2.default.createElement(
+                            'tr',
                             null,
-                            userListBefore != null ? userListBefore.length : ""
-                        ),
-                        _react2.default.createElement(
-                            'td',
-                            null,
-                            'dd'
-                        ),
-                        _react2.default.createElement(
-                            'td',
-                            null,
-                            'dd'
-                        ),
-                        _react2.default.createElement(
-                            'td',
-                            null,
-                            'dd'
-                        )
-                    )
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                item.id
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                item.username
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                item.password
+                            ),
+                            _react2.default.createElement(
+                                'td',
+                                null,
+                                '\u5220\u9664'
+                            )
+                        );
+                    }) : ""
                 )
             );
         }
