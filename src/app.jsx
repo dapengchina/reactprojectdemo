@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
 import Counter from './js/user/components/userComponent';
 import store from './js/user/stores/userStore';
 import UserList from './js/user/components/userListComponent';
-
-
-const action = type => store.dispatch({type});
+import action from './js/user/utils/actionDispatchUtil';
 
 /**
  * 渲染函数
@@ -19,7 +18,9 @@ function render() {
       onDecrement={() => action('DECREMENT')}
       onIncrementIfOdd={() => action('INCREMENT_IF_ODD')}
       onIncrementAsync={() => action('INCREMENT_ASYNC')} />,*/
-      <UserList></UserList>,
+      <Provider>
+       <UserList></UserList>
+      </Provider>,
     document.getElementById('root')
   )
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-import reducer from '../reducers/userReducer';
-import rootSaga from '../sagas/userSaga';
+
+import reducer from '../reducers/userPortfolioReducer';
+import rootSaga from '../sagas/userRootSaga';
 
 //创建saga中间件:sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();

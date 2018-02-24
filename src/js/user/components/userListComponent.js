@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import getUserList from '../apis/userListApi'
 import 'whatwg-fetch';
 
+import action from '../utils/actionDispatchUtil';
+
 var userListBefore=new Array();
-export default class UserList extends Component{
+export default class UserList extends Component{ 
       getInitialState() {
         var userListBefore=new Array();
         return userListBefore;
@@ -18,7 +19,6 @@ export default class UserList extends Component{
             this.setState(
                 userListBefore=json.data
             );
-            console.log(userListBefore.length);
         })
        }
        render(){
@@ -37,7 +37,11 @@ export default class UserList extends Component{
                                 <td>{item.id}</td>
                                 <td>{item.username}</td>
                                 <td>{item.password}</td>
-                                <td>删除</td>
+                                <td>
+                                <a onClick={()=>action(item.id,'DELUSER')}>删除</a>
+                                    &nbsp;&nbsp;
+                                    修改
+                                </td>
                               </tr>
                     }
                  ):""}
