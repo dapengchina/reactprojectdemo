@@ -1,11 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
 import 'whatwg-fetch';
+
+import JQuery from 'jquery';
+import UserListLoad from './userListLoadingComponent';
 
 import action from '../utils/actionDispatchUtil';
 
 var userListBefore=new Array();
 export default class UserList extends Component{ 
+      constructor(props) {
+        super(props);
+        this.state = {
+          loading:true
+        };
+      }
       getInitialState() {
         var userListBefore=new Array();
         return userListBefore;
@@ -16,14 +25,23 @@ export default class UserList extends Component{
         }).then(res=>{
             return res.json();
         }).then(json=>{
+            userListBefore=json.data;
             this.setState(
-                userListBefore=json.data
+                {
+                    loading:false
+                }
             );
         })
        }
        render(){
            return(
            <div>
+               {
+          this.state.loading
+          ? <div id="loadData">
+             <UserListLoad></UserListLoad>
+            </div>
+          : <div id="userData">
                <table border="1" width="100%">
                  <tr>
                      <td>ID</td>
@@ -47,6 +65,7 @@ export default class UserList extends Component{
                  ):""}
                    
                </table>
-           </div>)
+               </div>
+               }</div>)
        }
 }

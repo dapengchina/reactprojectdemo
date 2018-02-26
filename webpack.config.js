@@ -9,11 +9,18 @@ module.exports = {
      filename: "bundle.js"
  },
  module: {
-    loaders: [{
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-    }],
+    loaders: 
+    [
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+        },
+        {
+          test: /\.(gif|css|jpg|png|woff|svg|eot|ttf)\??.*$/,
+          loader: 'url-loader?limit=50000&name=[path][name].[ext]'
+        }
+    ],
  },
  plugins: [
     new HtmlwebpackPlugin({

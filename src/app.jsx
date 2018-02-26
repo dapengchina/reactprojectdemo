@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 
 import Counter from './js/user/components/userComponent';
 import store from './js/user/stores/userStore';
@@ -18,9 +17,7 @@ function render() {
       onDecrement={() => action('DECREMENT')}
       onIncrementIfOdd={() => action('INCREMENT_IF_ODD')}
       onIncrementAsync={() => action('INCREMENT_ASYNC')} />,*/
-      <Provider>
-       <UserList></UserList>
-      </Provider>,
+       <UserList></UserList>,
     document.getElementById('root')
   )
 }
